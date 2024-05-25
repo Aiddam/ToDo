@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToDo.Utilities\ToDo.Utilities.csproj" />
+    <ProjectReference Include="..\ToDo.Interfaces\ToDo.Interfaces.csproj" />
+    <ProjectReference Include="..\ToDo.DataAccess\ToDo.DataAccess.csproj" />
+    <ProjectReference Include="..\ToDo.Models\ToDo.Models.csproj" />
+  </ItemGroup>
+
+</Project>

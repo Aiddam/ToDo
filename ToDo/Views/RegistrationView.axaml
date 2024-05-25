@@ -1,0 +1,37 @@
+<UserControl x:Class="ToDo.Views.RegistrationView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:ToDo.Views"
+             xmlns:vm="clr-namespace:ToDo.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="1400"
+             x:DataType="vm:RegistrationViewModel"
+             mc:Ignorable="d">
+
+    <StackPanel Width="500"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Vertical"
+                Spacing="10">
+        <TextBlock HorizontalAlignment="Center"
+                   Text="{Binding Message}" />
+        <TextBox Text="{Binding Login}"
+                 Watermark="Логін" />
+        <TextBox Text="{Binding Name}"
+                 Watermark="Ім'я" />
+        <TextBox Text="{Binding Surname}"
+                 Watermark="Фамілія" />
+        <NumericUpDown Value="{Binding TenantId}"
+                       Watermark="Облачне Id" />
+        <TextBox Text="{Binding Password}"
+                 Watermark="Пароль" />
+        <Button Command="{Binding RegistrationCommand}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+            <TextBlock HorizontalAlignment="Center"
+                       Text="Реєстрація" />
+        </Button>
+    </StackPanel>
+</UserControl>

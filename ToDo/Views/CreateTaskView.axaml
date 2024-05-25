@@ -1,0 +1,33 @@
+<UserControl x:Class="ToDo.Views.CreateTaskView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:ToDo.Views"
+             xmlns:vm="clr-namespace:ToDo.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:DataType="vm:CreateTaskViewModel"
+             mc:Ignorable="d">
+    <StackPanel Width="500"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Vertical"
+                Spacing="10">
+        <TextBlock HorizontalAlignment="Center"
+                   Text="{Binding Message}" />
+        <TextBox Text="{Binding Title}"
+                 Watermark="Назва" />
+        <TextBox Height="125"
+                 AcceptsReturn="True"
+                 Text="{Binding Description}"
+                 TextWrapping="Wrap"
+                 Watermark="Опис" />
+        <Button Command="{Binding CreateTask}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+            <TextBlock HorizontalAlignment="Center"
+                       Text="Створити задачу" />
+        </Button>
+    </StackPanel>
+</UserControl>

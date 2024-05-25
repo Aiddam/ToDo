@@ -1,0 +1,65 @@
+<UserControl x:Class="ToDo.Views.HomeView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:ToDo.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:ToDo.Views"
+             xmlns:vm="clr-namespace:ToDo.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:DataType="vm:HomeViewModel"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:LoginConverter x:Key="LoginConverter" />
+        <converters:LoginButtonConverter x:Key="LoginButtonConverter" />
+    </UserControl.Resources>
+
+    <StackPanel>
+        <Grid RowDefinitions="*, 8*">
+            <TabControl HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        SelectedIndex="1"
+                        Grid.Row="1">
+
+                <TabItem Header="Створити задачу"
+                         FontSize="28"
+                         IsEnabled="True">
+
+                    <views:CreateTaskView DataContext="{Binding CreateTaskViewModel}" />
+
+
+                </TabItem>
+                <TabItem Header="Переглянути задачі">
+
+                    <views:ToDoView DataContext="{Binding ToDoViewModel}" />
+
+                </TabItem>
+
+            </TabControl>
+
+            <StackPanel Margin="20,10"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal"
+                        Spacing="10"
+                        Grid.Row="2">
+                <TextBlock VerticalAlignment="Center"
+                           Text="{Binding CurrentUser.Name}" />
+                <TextBlock VerticalAlignment="Center"
+                           Text="{Binding CurrentUser.Surname}" />
+
+                <Button Content="{Binding CurrentUser, Converter={StaticResource LoginConverter}, Mode=OneWay}"
+                        Command="{Binding LogoutButton}"
+                        VerticalAlignment="Center"
+                        IsEnabled="{Binding CurrentUser, Converter={StaticResource LoginButtonConverter}, Mode=OneWay}" />
+
+            </StackPanel>
+
+        </Grid>
+
+    </StackPanel>
+
+
+
+</UserControl>

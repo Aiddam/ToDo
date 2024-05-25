@@ -1,0 +1,21 @@
+<UserControl x:Class="ToDo.Views.MainView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:ToDo.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ToDo.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ToDo.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:DataType="vm:MainViewModel"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:LoginConverter x:Key="LoginConverter" />
+        <converters:LoginButtonConverter x:Key="LoginButtonConverter" />
+    </UserControl.Resources>
+    <Grid RowDefinitions="*, 8*">
+        <ContentControl Content="{Binding ViewModel}"
+                        Grid.Row="1" />
+    </Grid>
+</UserControl>

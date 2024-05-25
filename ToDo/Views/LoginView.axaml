@@ -1,0 +1,30 @@
+<UserControl x:Class="ToDo.Views.LoginView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ToDo.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:DataType="vm:LoginViewModel"
+             mc:Ignorable="d">
+    <StackPanel Width="300"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+        <TextBox Text="{Binding Login}"
+                 Watermark="Логін" />
+
+        <TextBox Margin="0,10,0,0"
+                 Classes="revealPasswordButton"
+                 PasswordChar="*"
+                 Text="{Binding Password}"
+                 Watermark="Пароль" />
+
+        <Button Content="Login"
+                Command="{Binding LoginCommand}"
+                Margin="0,10,0,0"
+                HorizontalAlignment="Center" />
+
+    </StackPanel>
+</UserControl>

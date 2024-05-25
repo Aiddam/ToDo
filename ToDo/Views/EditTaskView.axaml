@@ -1,0 +1,105 @@
+<UserControl x:Class="ToDo.Views.EditTaskView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:ToDo.Views"
+             xmlns:vm="clr-namespace:ToDo.ViewModels"
+             d:DesignHeight="1000"
+             d:DesignWidth="800"
+             x:DataType="vm:EditTaskViewModel"
+             Loaded="UserControl_Loaded"
+             mc:Ignorable="d">
+    <Border Width="510"
+            VerticalAlignment="Top"
+            Background="LightGray"
+            BorderBrush="Black"
+            BorderThickness="1"
+            CornerRadius="3">
+        <StackPanel Width="500"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Orientation="Vertical"
+                    Spacing="10">
+            <TextBox Text="{Binding TaskItem.Title}"
+                     Watermark="Назва" />
+            <TextBox Height="125"
+                     AcceptsReturn="True"
+                     Text="{Binding TaskItem.Description}"
+                     TextWrapping="Wrap"
+                     Watermark="Опис" />
+            <Grid ColumnDefinitions="*, *">
+                <Button Command="{Binding EditTaskItemCommand}"
+                        HorizontalAlignment="Stretch"
+                        Grid.Column="0">
+                    <TextBlock HorizontalAlignment="Center"
+                               Text="Зберегти" />
+                </Button>
+                <Button Command="{Binding GoBackCommand}"
+                        HorizontalAlignment="Stretch"
+                        Grid.Column="1">
+                    <TextBlock HorizontalAlignment="Center"
+                               Text="Повернутися" />
+                </Button>
+
+            </Grid>
+            <!--  Section for Comments  -->
+            <TabControl Margin="0,10,0,0">
+                <TabItem Header="Коментарі"
+                         FontSize="16"
+                         FontWeight="Bold">
+                    <StackPanel>
+                        <TextBox Height="75"
+                                 Margin="0,5"
+                                 AcceptsReturn="True"
+                                 KeyUp="CommentTextBoxEnter"
+                                 Text="{Binding Comment}"
+                                 TextWrapping="Wrap"
+                                 Watermark="Shift + Enter відправити коментар" />
+                        <ScrollViewer MaxHeight="350"
+                                      AllowAutoHide="True"
+                                      HorizontalScrollBarVisibility="Disabled"
+                                      VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding Comments}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                Background="WhiteSmoke"
+                                                BorderBrush="Black"
+                                                BorderThickness="1">
+                                            <StackPanel Margin="5"
+                                                        Spacing="5">
+                                                <TextBlock Text="{Binding Content}"
+                                                           TextWrapping="Wrap" />
+                                                <StackPanel Orientation="Horizontal"
+                                                            Spacing="10">
+                                                    <TextBlock FontStyle="Italic"
+                                                               Text="Коритсувач:" />
+                                                    <TextBlock FontStyle="Italic"
+                                                               Text="{Binding User.Login}" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal"
+                                                            Spacing="10">
+                                                    <DatePicker DayFormat="HH:mm:ss"
+                                                                IsEnabled="False"
+                                                                MonthFormat="MMMM dd"
+                                                                SelectedDate="{Binding CreationDateOffset}" />
+                                                </StackPanel>
+
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Трекер часу"
+                         FontSize="16"
+                         FontWeight="Bold" />
+            </TabControl>
+        </StackPanel>
+    </Border>
+
+</UserControl>

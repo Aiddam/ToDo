@@ -1,0 +1,36 @@
+<UserControl x:Class="ToDo.Views.LoginOrRegisterView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:ToDo.Views"
+             xmlns:vm="using:ToDo.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:DataType="vm:LoginOrRegisterViewModel"
+             mc:Ignorable="d">
+
+    <StackPanel>
+        <Grid RowDefinitions="*, 8*">
+            <TabControl HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        SelectedIndex="1"
+                        Grid.Row="1">
+
+                <TabItem Header="Зареєструватися"
+                         FontSize="28"
+                         IsEnabled="True">
+
+                    <views:RegistrationView DataContext="{Binding RegisterViewModel}" />
+
+                </TabItem>
+                <TabItem Header="Залогінитися">
+                    <views:LoginView DataContext="{Binding LoginViewModel}" />
+
+                </TabItem>
+
+            </TabControl>
+        </Grid>
+
+    </StackPanel>
+</UserControl>
