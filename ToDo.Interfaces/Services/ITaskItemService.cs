@@ -9,5 +9,6 @@ namespace ToDo.Interfaces.Services
         Task<TaskItem> UpdateTaskItemAsync(TaskItem taskItem, CancellationToken cancellationToken = default);
         Task DeleteAsync(int taskItemId);
         Task<TaskItem> GetTaskItemAsync(int taskItemId, CancellationToken cancellationToken = default);
+        Task GenerateReportAsync(int tenantId, CancellationToken cancellationToken = default);
     }
 }

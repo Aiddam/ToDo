@@ -4,12 +4,14 @@ using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ToDo.Interfaces.Services;
 using ToDo.Models;
 using ToDo.Models.Enum;
 using ToDo.Models.Models;
+using ToDo.Services.Services;
 using ToDo.ViewModelParameters;
 
 namespace ToDo.ViewModels;
@@ -33,8 +35,11 @@ public class ToDoViewModel : ViewModelBaseWithParameters<User>
         _taskItemService = taskItemService;
         _componentContext = componentContext;
         DeleteCommand = ReactiveCommand.CreateFromTask(DeleteCommandHandler);
+        ReportCommand = ReactiveCommand.CreateFromTask(ReportCommandHandler);
+
     }
     public ICommand DeleteCommand { get; }
+    public ICommand ReportCommand { get; }
 
     public override Task SetAdditionalParameter(User parameter)
     {
@@ -60,6 +65,18 @@ public class ToDoViewModel : ViewModelBaseWithParameters<User>
     }
     public async Task DeleteCommandHandler()
     {
+    }
+    public async Task ReportCommandHandler()
+    {
+        try
+        {
+            await _taskItemService.GenerateReportAsync(CurrentUser.TenantId);
+        }
+        catch (Exception ex)
+        {
+
+            throw;
+        }
     }
     public void Drop(TaskItem taskItem, string statusName)
     {
