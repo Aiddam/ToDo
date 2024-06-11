@@ -45,6 +45,12 @@ public class CreateTaskViewModel : ViewModelBaseWithParameters<User>
         set => this.RaiseAndSetIfChanged(ref _message, value);
     }
     public ICommand CreateTask { get; }
+    public void ClearData()
+    {
+        Message = string.Empty;
+        Title = string.Empty;
+        Description = string.Empty;
+    }
     public async Task CreateTaskCommandHandler()
     {
         Message = string.Empty;

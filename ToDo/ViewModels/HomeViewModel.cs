@@ -17,11 +17,6 @@ public class HomeViewModel : ViewModelBaseWithParameters<User>
     public ViewModelBaseWithParameters<User>? ToDoViewModel { get; set; }
     public ICommand LogoutButton { get; set; }
 
-    public bool IsRegistrtionShow
-    {
-        get => _user!.Role == UserRole.Owner;
-    }
-
     public override User? CurrentUser 
     {
         get => _user; 
@@ -31,7 +26,7 @@ public class HomeViewModel : ViewModelBaseWithParameters<User>
     public HomeViewModel(IComponentContext context)
     {
         _context = context;
-      ;
+      
         LogoutButton = ReactiveCommand.Create(() => ChangeView(_context.Resolve<LoginOrRegisterViewModel>()));
     }
     public override Task SetAdditionalParameter(User parameter)

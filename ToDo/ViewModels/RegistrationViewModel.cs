@@ -99,7 +99,7 @@ namespace ToDo.ViewModels
 
             try
             {
-                UserDto userDto = new() { Login = Login, Name = Name, Role = UserRole.Employee, Password = Password, Surname = Surname, TenantId = TenantId};
+                UserDto userDto = new() { Login = Login, Name = Name, Password = Password, Surname = Surname, TenantId = TenantId};
                 var user = await _userService.RegistrationAsync(userDto);
                 _ = _changeView(user);
             }

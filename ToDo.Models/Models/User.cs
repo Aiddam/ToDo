@@ -9,7 +9,6 @@ namespace ToDo.Models.Models
         public string Surname { get; set; } = string.Empty;
         public string PasswordHash { get; set; } = string.Empty;
         public string Salt { get; set; } = string.Empty;
-        public UserRole Role { get; set; }
         public int TenantId { get; set; }
     }
 }

@@ -23,6 +23,7 @@
                         Grid.Row="1">
 
                 <TabItem Header="Створити задачу"
+                         HorizontalAlignment="Center"
                          FontSize="28"
                          IsEnabled="True">
 
@@ -30,7 +31,8 @@
 
 
                 </TabItem>
-                <TabItem Header="Переглянути задачі">
+                <TabItem Header="Переглянути задачі"
+                         HorizontalAlignment="Center">
 
                     <views:ToDoView DataContext="{Binding ToDoViewModel}" />
 
@@ -59,7 +61,5 @@
         </Grid>
 
     </StackPanel>
-
-
 
 </UserControl>
